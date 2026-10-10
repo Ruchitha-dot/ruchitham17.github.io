@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ruchitha Muniraj's student portfolio featuring learning activities, technical skills, and career goals.">
+  <title>Ruchitha Muniraj | Student Portfolio</title>
+  <style>
+    :root {
+      --navy: #081426;
+      --navy-soft: #101f35;
+      --panel: #12243b;
+      --white: #f4f8fc;
+      --muted: #b5c3d5;
+      --teal: #54e0d0;
+      --teal-dark: #183f48;
+      --line: rgba(200, 224, 242, .14);
+      --shadow: 0 18px 50px rgba(0, 0, 0, .22);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      margin: 0;
+      background: var(--navy);
+      color: var(--white);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; }
+    .wrap { width: min(1100px, calc(100% - 40px)); margin: 0 auto; }
+    header {
+      position: sticky; top: 0; z-index: 10;
+      background: rgba(8, 20, 38, .9);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { font-weight: 800; letter-spacing: -.03em; text-decoration: none; }
+    .brand span { color: var(--teal); }
+    nav { display: flex; gap: 22px; flex-wrap: wrap; }
+    nav a { color: var(--muted); text-decoration: none; font-size: .92rem; }
+    nav a:hover, nav a:focus-visible { color: var(--teal); }
+    .hero { padding: 100px 0 88px; overflow: hidden; position: relative; }
+    .hero:before {
+      content: ""; position: absolute; width: 420px; height: 420px; border-radius: 50%;
+      right: -130px; top: 30px; background: radial-gradient(circle, rgba(84,224,208,.17), transparent 68%);
+      pointer-events: none;
+    }
+    .eyebrow { color: var(--teal); text-transform: uppercase; letter-spacing: .18em; font-size: .78rem; font-weight: 800; }
+    h1 { font-size: clamp(2.7rem, 7vw, 5.5rem); line-height: 1.03; letter-spacing: -.06em; margin: 18px 0; max-width: 850px; }
+    h1 span { color: var(--teal); }
+    .hero p { max-width: 650px; color: var(--muted); font-size: 1.15rem; }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; padding: 12px 19px; text-decoration: none; font-weight: 750; border: 1px solid var(--line); }
+    .button.primary { background: var(--teal); color: #06202a; border-color: var(--teal); }
+    .button.secondary:hover { border-color: var(--teal); color: var(--teal); }
+    section { padding: 72px 0; border-top: 1px solid var(--line); }
+    .section-head { margin-bottom: 30px; }
+    .section-head h2 { font-size: clamp(1.9rem, 4vw, 2.8rem); line-height: 1.15; letter-spacing: -.04em; margin: 8px 0 12px; }
+    .section-head p { color: var(--muted); max-width: 680px; margin: 0; }
+    .about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 22px; }
+    .panel { background: linear-gradient(145deg, rgba(18,36,59,.96), rgba(13,29,49,.96)); border: 1px solid var(--line); border-radius: 22px; padding: 26px; box-shadow: var(--shadow); }
+    .panel p { color: var(--muted); margin-top: 0; }
+    .facts { display: grid; gap: 16px; }
+    .fact-label { display: block; color: var(--muted); font-size: .82rem; margin-bottom: 3px; }
+    .fact-value { font-weight: 750; }
+    .project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .project { display: flex; flex-direction: column; min-height: 240px; }
+    .project-number { color: var(--teal); font-weight: 850; letter-spacing: .1em; font-size: .82rem; }
+    .project h3 { margin: 12px 0 8px; font-size: 1.22rem; }
+    .project p { color: var(--muted); margin: 0 0 18px; }
+    .project .small-link { margin-top: auto; color: var(--teal); text-decoration: none; font-weight: 750; font-size: .92rem; }
+    .project .small-link:hover { text-decoration: underline; }
+    .tag-grid { display: flex; flex-wrap: wrap; gap: 11px; }
+    .tag { border: 1px solid rgba(84,224,208,.25); background: rgba(84,224,208,.07); color: #dffcf8; border-radius: 999px; padding: 9px 14px; font-size: .94rem; }
+    .goal { border-left: 3px solid var(--teal); padding: 8px 0 8px 22px; color: var(--muted); font-size: 1.08rem; max-width: 820px; }
+    .contact-panel { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+    .contact-panel p { margin: 0; color: var(--muted); max-width: 620px; }
+    .placeholder-note { font-size: .86rem; color: #91a5bb; margin-top: 14px; }
+    footer { border-top: 1px solid var(--line); padding: 24px 0 34px; color: var(--muted); font-size: .88rem; }
+    footer .wrap { display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; }
+    :focus-visible { outline: 3px solid var(--teal); outline-offset: 4px; }
+    @media (max-width: 760px) {
+      .nav { padding: 15px 0; align-items: flex-start; flex-direction: column; }
+      nav { gap: 13px; }
+      .hero { padding: 76px 0 66px; }
+      section { padding: 56px 0; }
+      .about-grid, .project-grid { grid-template-columns: 1fr; }
+      .panel { padding: 22px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#home">RM<span>.</span></a>
+      <nav aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#goal">Career Goal</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home" style="border-top:0">
+      <div class="wrap">
+        <div class="eyebrow">Computer Science &amp; Engineering · Student Portfolio</div>
+        <h1>Hi, I'm<br><span>Ruchitha Muniraj.</span></h1>
+        <p>Learning by building, solving problems, and documenting every step of the journey.</p>
+        <div class="actions">
+          <a class="button primary" href="#projects">Explore my work <span aria-hidden="true">&nbsp;↘</span></a>
+          <a class="button secondary" href="#about">Get to know me</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">A little about me</div>
+          <h2>Curious mind. Growing skill set.</h2>
+        </div>
+        <div class="about-grid">
+          <div class="panel">
+            <p>I'm a third-semester B.Tech Computer Science and Engineering student at REVA University. I'm interested in programming, software development, problem-solving, and Artificial Intelligence and Machine Learning.</p>
+            <p>Through coursework and practice, I'm developing my programming foundations, learning version-control workflows, and organizing my work into a portfolio that reflects my learning progress.</p>
+          </div>
+          <div class="panel facts">
+            <div><span class="fact-label">Current study</span><span class="fact-value">B.Tech · CSE</span></div>
+            <div><span class="fact-label">Semester</span><span class="fact-value">Third semester</span></div>
+            <div><span class="fact-label">Institution</span><span class="fact-value">REVA University</span></div>
+            <div><span class="fact-label">Areas of interest</span><span class="fact-value">Software Development · AI/ML</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Learning in action</div>
+          <h2>Projects &amp; activities</h2>
+          <p>A snapshot of the development tools and programming topics I've been exploring through my engineering activities.</p>
+        </div>
+        <div class="project-grid">
+          <article class="panel project">
+            <div class="project-number">ACTIVITY 01</div>
+            <h3>VS Code &amp; Hello World in C</h3>
+            <p>Set up a C/C++ development environment, explored GCC, and practised compiling and running a simple C program.</p>
+            <a class="small-link" href="#contact">Repository link to be added ↗</a>
+          </article>
+          <article class="panel project">
+            <div class="project-number">ACTIVITY 02</div>
+            <h3>Git &amp; GitHub Foundations</h3>
+            <p>Practised repository organization, README documentation, commits, and pushing project work to GitHub.</p>
+            <a class="small-link" href="#contact">Repository link to be added ↗</a>
+          </article>
+          <article class="panel project">
+            <div class="project-number">ACTIVITY 03</div>
+            <h3>GitLens &amp; Live Share</h3>
+            <p>Explored code-history insights with GitLens and collaborative development sessions with Live Share.</p>
+            <span class="small-link">Activity exploration</span>
+          </article>
+          <article class="panel project">
+            <div class="project-number">ACTIVITY 04</div>
+            <h3>LeetCode Solutions Portfolio</h3>
+            <p>Organizing practice around arrays and strings, basic algorithms, stacks, and linked lists, with solution notes and complexity analysis.</p>
+            <a class="small-link" href="#contact">Repository link to be added ↗</a>
+          </article>
+        </div>
+        <p class="placeholder-note">Note: Repository URLs have not been supplied yet. Replace the placeholder links with your real GitHub repository URLs before publishing.</p>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Tools &amp; foundations</div>
+          <h2>Skills I'm developing</h2>
+          <p>A practical foundation built through coursework, guided activities, and continued practice.</p>
+        </div>
+        <div class="panel">
+          <div class="tag-grid">
+            <span class="tag">C / C++ fundamentals</span>
+            <span class="tag">Visual Studio Code</span>
+            <span class="tag">GCC compiler</span>
+            <span class="tag">Git</span>
+            <span class="tag">GitHub</span>
+            <span class="tag">Basic algorithms</span>
+            <span class="tag">Arrays &amp; strings</span>
+            <span class="tag">Stacks &amp; linked lists</span>
+            <span class="tag">Technical documentation</span>
+            <span class="tag">GitLens</span>
+            <span class="tag">Live Share</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="goal">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Looking ahead</div>
+          <h2>My career goal</h2>
+        </div>
+        <p class="goal">I want to strengthen my programming and data-structures knowledge, solve more coding problems, and explore opportunities in software development and AI/ML. My next step is to keep practising, build practical projects, and maintain a portfolio that shows my growth over time.</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="eyebrow">Let's connect</div>
+          <h2>Contact &amp; links</h2>
+        </div>
+        <div class="panel contact-panel">
+          <div>
+            <p>I'm building my portfolio as I learn. Add your public GitHub profile and repository links here so visitors can explore your work.</p>
+            <p class="placeholder-note">No contact details or profile URLs have been invented.</p>
+          </div>
+          <a class="button primary" href="https://github.com/" target="_blank" rel="noopener noreferrer">Open GitHub ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <span>© <span id="year">2026</span> Ruchitha Muniraj</span>
+      <span>Student portfolio · Learning one step at a time</span>
+    </div>
+  </footer>
+</body>
+</html>
